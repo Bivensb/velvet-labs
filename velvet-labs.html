@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="Velvet Labs — Research & Development studio turning ideas into applied breakthroughs." />
+  <title>Velvet Labs</title>
+
+  <style>
+    :root{
+      --navy:#0B1B3B;
+      --gold:#D4AF37;
+      --white:#ffffff;
+      --ink:#0a0f1f;
+      --muted:#5b6475;
+      --card:#0f244f;
+      --line:rgba(255,255,255,.12);
+      --shadow: 0 16px 50px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color:var(--white); background: radial-gradient(1200px 700px at 15% 5%, rgba(212,175,55,.18), transparent 60%),
+                                                           radial-gradient(900px 600px at 85% 10%, rgba(255,255,255,.08), transparent 55%),
+                                                           linear-gradient(180deg, var(--navy), #071027 70%, #050a16); }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 20px 70px;}
+    /* Top nav */
+    header{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(10px);
+      background: rgba(5,10,22,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      max-width:var(--max); margin:0 auto; padding:14px 20px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background: linear-gradient(145deg, rgba(212,175,55,.95), rgba(212,175,55,.35));
+      box-shadow: 0 10px 30px rgba(212,175,55,.18);
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.22);
+    }
+    .logo svg{width:22px; height:22px; opacity:.95}
+    .brand strong{letter-spacing:.4px}
+    .links{display:flex; gap:18px; align-items:center; flex-wrap:wrap;}
+    .links a{
+      text-decoration:none; color:rgba(255,255,255,.88); font-size:14px;
+      padding:8px 10px; border-radius:12px;
+    }
+    .links a:hover{background:rgba(255,255,255,.06)}
+    .cta{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px; border-radius:14px; border:1px solid rgba(212,175,55,.55);
+      background: rgba(212,175,55,.12);
+      text-decoration:none; font-weight:600;
+    }
+    .cta:hover{background: rgba(212,175,55,.18)}
+    /* Hero */
+    .hero{padding:56px 0 34px; display:grid; grid-template-columns: 1.15fr .85fr; gap:28px; align-items:start;}
+    @media (max-width: 880px){ .hero{grid-template-columns:1fr; padding-top:34px;} }
+    .badge{
+      display:inline-flex; gap:10px; align-items:center;
+      border:1px solid rgba(212,175,55,.35);
+      background: rgba(11,27,59,.55);
+      padding:8px 12px; border-radius:999px;
+      color: rgba(255,255,255,.9); font-size:13px;
+    }
+    .dot{width:9px;height:9px;border-radius:99px;background:var(--gold); box-shadow:0 0 0 4px rgba(212,175,55,.18);}
+    h1{margin:16px 0 10px; font-size:46px; line-height:1.05; letter-spacing:-.6px;}
+    @media (max-width: 520px){ h1{font-size:38px;} }
+    .lead{color:rgba(255,255,255,.86); font-size:16px; line-height:1.6; max-width:60ch;}
+    .heroActions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      border-radius:14px; padding:12px 14px; text-decoration:none; font-weight:700;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+    }
+    .btn:hover{background: rgba(255,255,255,.10)}
+    .btnPrimary{
+      border:1px solid rgba(212,175,55,.60);
+      background: linear-gradient(180deg, rgba(212,175,55,.18), rgba(212,175,55,.10));
+    }
+    .btnPrimary:hover{background: linear-gradient(180deg, rgba(212,175,55,.22), rgba(212,175,55,.12));}
+    /* Feature card */
+    .panel{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panelTop{
+      padding:18px 18px 14px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .panelTop strong{font-size:14px; color:rgba(255,255,255,.92)}
+    .pill{
+      font-size:12px; padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(212,175,55,.40);
+      color:rgba(255,255,255,.86);
+      background: rgba(212,175,55,.08);
+      white-space:nowrap;
+    }
+    .panelBody{padding:18px}
+    .kpiGrid{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+    .kpi{
+      border-radius:16px;
+      padding:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(7,16,39,.55);
+    }
+    .kpi .n{font-size:22px; font-weight:800; letter-spacing:-.2px}
+    .kpi .l{font-size:12px; color:rgba(255,255,255,.74); margin-top:4px}
+    .note{margin-top:14px; color:rgba(255,255,255,.78); font-size:13px; line-height:1.55}
+    /* Sections */
+    section{padding:34px 0}
+    .sectionTitle{display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:14px;}
+    h2{margin:0; font-size:22px; letter-spacing:-.2px}
+    .sub{margin:0; color:rgba(255,255,255,.74); font-size:14px}
+    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;}
+    @media (max-width: 900px){ .grid3{grid-template-columns:1fr;} }
+    .card{
+      border-radius: var(--radius);
+      padding:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .card h3{margin:0 0 8px; font-size:16px}
+    .card p{margin:0; color:rgba(255,255,255,.76); line-height:1.6; font-size:14px}
+    .icon{
+      width:38px;height:38px;border-radius:14px;
+      display:grid;place-items:center;
+      margin-bottom:12px;
+      border:1px solid rgba(212,175,55,.35);
+      background: rgba(212,175,55,.10);
+    }
+    .icon svg{width:20px;height:20px; opacity:.95}
+    /* Contact */
+    .contact{
+      display:grid; grid-template-columns: 1fr 1fr; gap:14px;
+    }
+    @media (max-width: 900px){ .contact{grid-template-columns:1fr;} }
+    label{display:block; font-size:12px; color:rgba(255,255,255,.72); margin:0 0 6px}
+    input, textarea{
+      width:100%;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(7,16,39,.55);
+      color:var(--white);
+      padding:12px 12px;
+      outline:none;
+    }
+    textarea{min-height:120px; resize:vertical}
+    input:focus, textarea:focus{border-color: rgba(212,175,55,.55); box-shadow:0 0 0 4px rgba(212,175,55,.12)}
+    .fine{color:rgba(255,255,255,.62); font-size:12px; line-height:1.5}
+    footer{
+      margin-top:44px; padding-top:20px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:rgba(255,255,255,.62);
+      display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+      font-size:12px;
+    }
+    .footerLinks{display:flex; gap:14px; flex-wrap:wrap;}
+    /* smooth scroll */
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Velvet Labs home">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7z" stroke="rgba(11,27,59,.9)" stroke-width="1.6" />
+          </svg>
+        </div>
+        <div>
+          <strong>Velvet Labs</strong><br/>
+          <span style="font-size:12px;color:rgba(255,255,255,.65)">R&amp;D Studio</span>
+        </div>
+      </a>
+
+      <nav class="links" aria-label="Primary">
+        <a href="#work">What We Do</a>
+        <a href="#approach">Approach</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <div class="hero">
+      <div>
+        <div class="badge"><span class="dot"></span> Research-led. Engineering-driven. Results-focused.</div>
+        <h1>Velvet Labs turns research into reliable, real-world systems.</h1>
+        <p class="lead">
+          We’re a research &amp; development team exploring advanced methods and building production-grade prototypes—
+          from experimental models to deployable tooling—designed to be tested, measured, and improved.
+        </p>
+        <div class="heroActions">
+          <a class="btn btnPrimary" href="#contact">Start a conversation</a>
+          <a class="btn" href="#work">Explore capabilities</a>
+        </div>
+        <p class="fine" style="margin-top:14px">
+          Replace this copy with your exact niche (AI, materials, biotech, energy, robotics, etc.). I can tailor it in 2 minutes.
+        </p>
+      </div>
+
+      <aside class="panel" aria-label="At a glance">
+        <div class="panelTop">
+          <strong>At a glance</strong>
+          <span class="pill">Gold • Navy • White</span>
+        </div>
+        <div class="panelBody">
+          <div class="kpiGrid">
+            <div class="kpi">
+              <div class="n">Prototype → Pilot</div>
+              <div class="l">From concept to measurable outcomes</div>
+            </div>
+            <div class="kpi">
+              <div class="n">Evidence-first</div>
+              <div class="l">Hypotheses, tests, and iteration</div>
+            </div>
+            <div class="kpi">
+              <div class="n">Secure by design</div>
+              <div class="l">Best-practice engineering and governance</div>
+            </div>
+            <div class="kpi">
+              <div class="n">Clear reporting</div>
+              <div class="l">Findings, tradeoffs, and next steps</div>
+            </div>
+          </div>
+          <p class="note">
+            Want this to feel more “luxury science” or more “deep-tech lab”? I can shift the tone either way.
+          </p>
+        </div>
+      </aside>
+    </div>
+
+    <section id="work">
+      <div class="sectionTitle">
+        <div>
+          <h2>What we do</h2>
+          <p class="sub">R&amp;D engagements shaped around your goals, constraints, and timelines.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 19h16M6 16V8m6 8V5m6 11V10" stroke="rgba(255,255,255,.92)" stroke-width="1.6" />
+            </svg>
+          </div>
+          <h3>Applied research</h3>
+          <p>We explore methods, run experiments, and summarize findings with practical next steps—no fluff.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 7h10v10H7z" stroke="rgba(255,255,255,.92)" stroke-width="1.6"/>
+              <path d="M7 12h10" stroke="rgba(212,175,55,.9)" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <h3>Prototyping</h3>
+          <p>Fast, testable builds to validate value early—then harden what works into a pilot-ready system.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4z" stroke="rgba(255,255,255,.92)" stroke-width="1.6"/>
+            </svg>
+          </div>
+          <h3>Engineering &amp; validation</h3>
+          <p>Instrumentation, performance testing, risk reviews, and documentation so results hold up in the real world.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="approach">
+      <div class="sectionTitle">
+        <div>
+          <h2>Our approach</h2>
+          <p class="sub">A simple loop: define → test → measure → refine.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h3>1) Discovery</h3>
+          <p>Clarify objectives, constraints, and success metrics. Align on scope, timeline, and outputs.</p>
+        </div>
+        <div class="card">
+          <h3>2) Experimentation</h3>
+          <p>Run controlled tests, compare baselines, and document decisions so outcomes are explainable.</p>
+        </div>
+        <div class="card">
+          <h3>3) Delivery</h3>
+          <p>Ship prototypes, reports, and implementation guidance—built for handoff or continued iteration.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="sectionTitle">
+        <div>
+          <h2>About Velvet Labs</h2>
+          <p class="sub">A compact team designed for high-leverage R&amp;D.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <p>
+          Velvet Labs partners with product teams, research groups, and founders who need rigorous exploration and
+          pragmatic engineering. We prioritize clarity, repeatability, and measurable outcomes—so your next decision
+          is easier (and better).
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="sectionTitle">
+        <div>
+          <h2>Contact</h2>
+          <p class="sub">Tell us what you’re building. We’ll reply with next steps.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="card">
+          <!-- This form uses mailto (no backend). You can swap to Formspree/Netlify later. -->
+          <form action="mailto:hello@velvetlabs.example" method="post" enctype="text/plain">
+            <div style="display:grid; gap:12px">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" autocomplete="name" placeholder="Your name" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required />
+              </div>
+              <div>
+                <label for="message">What are you working on?</label>
+                <textarea id="message" name="message" placeholder="A quick summary of goals, timeline, and constraints" required></textarea>
+              </div>
+              <button class="btn btnPrimary" type="submit">Send</button>
+              <p class="fine">Tip: replace <code>hello@velvetlabs.example</code> with your real email address.</p>
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Prefer email?</h3>
+          <p>Reach us at <strong>hello@velvetlabs.example</strong> (update to your real inbox).</p>
+          <div style="height:10px"></div>
+          <h3>What to include</h3>
+          <p>
+            Your domain (what you’re researching), desired outcomes, timeline, and any constraints (security, budget,
+            data access, compliance).
+          </p>
+          <div style="height:10px"></div>
+          <p class="fine">
+            This site is static and fast by default. If you want blog posts, careers, case studies, or a client portal,
+            we can level it up.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> Velvet Labs. All rights reserved.</div>
+      <div class="footerLinks">
+        <a href="#work">Capabilities</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
